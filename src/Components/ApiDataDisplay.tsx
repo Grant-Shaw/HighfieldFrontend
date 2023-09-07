@@ -45,7 +45,7 @@ const ApiDataDisplay: React.FC<Props> = ({ ageData, topColourData }) => {
           <tr>
             <th>Colour</th>
             <th>Count &nbsp;</th>
-            <th>Color Preview</th> {/* Add the third column for color preview */}
+            <th>Color Preview</th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@ const ApiDataDisplay: React.FC<Props> = ({ ageData, topColourData }) => {
                 &nbsp;
                 <div
                   style={{
-                    width: '20px', // Set the width and height as needed
+                    width: '20px', 
                     height: '20px',
                     backgroundColor: colorData.colour,
                     display: 'inline-block',

@@ -21,7 +21,6 @@ function App() {
   // Function to fetch data from the API
   const fetchData = () => {
     setFetching(true); // Set fetching to true while waiting for the API response
-    // Make the API call
     fetch('https://localhost:7125/api/Users/UserData')
       .then((response) => {
         if (!response.ok) {
@@ -42,7 +41,6 @@ function App() {
   };
 
   useEffect(() => {
-    // This effect runs on component mount, you can put any other initial setup here.
   }, []);
 
   return (
