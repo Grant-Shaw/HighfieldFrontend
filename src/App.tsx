@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ApiDataDisplay from './Components/ApiDataDisplay'; // Adjust the path as needed
 
 interface ApiResponse {
   ages: {
@@ -24,7 +25,7 @@ function App() {
     fetch('https://localhost:7125/api/Users/UserData')
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok}',);
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
@@ -57,60 +58,8 @@ function App() {
       {error && <p>Error: {error}</p>}
 
       {/* Display the data if it's available */}
-      {data && (
-  <div>
-    <h2>Age Data</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>User ID &nbsp;</th>
-          <th>Original Age &nbsp;</th>
-          <th>Age Plus Twenty</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.ages.map((ageData, index) => (
-          <tr key={index}>
-            <td>{ageData.userId} &nbsp;</td>
-            <td>{ageData.originalAge} &nbsp;</td>
-            <td>{ageData.agePlusTwenty}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-
-    <h2>Top Colours</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Colour</th>
-          <th>Count &nbsp;</th>
-          <th>Color Preview</th> {/* Add the third column for color preview */}
-        </tr>
-      </thead>
-      <tbody>
-        {data.topColours.map((colorData, index) => (
-          <tr key={index}>
-            <td>{colorData.colour}</td>
-            <td>{colorData.count}</td>
-            <td>
-            &nbsp;
-              <div
-                style={{
-                  width: '20px', // Set the width and height as needed
-                  height: '20px',
-                  backgroundColor: colorData.colour,
-                  display: 'inline-block',
-                }}
-              ></div> 
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-</div>
+      {data && <ApiDataDisplay ageData={data.ages} topColourData={data.topColours} />}
+    </div>
   );
 }
 
