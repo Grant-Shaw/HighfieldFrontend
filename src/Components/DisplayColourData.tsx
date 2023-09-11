@@ -8,11 +8,11 @@ const DisplayColourData = ({ topColourData }: Props) => {
   return (
     <>
       <h2>Top Colours</h2>
-      <table>
-        <thead>
+      <table className="table table-striped">
+        <thead className="table-primary">
           <tr>
             <th>Colour</th>
-            <th>Count &nbsp;</th>
+            <th>Count</th>
             <th>Color Preview</th>
           </tr>
         </thead>
@@ -22,7 +22,6 @@ const DisplayColourData = ({ topColourData }: Props) => {
               <td>{colorData.colour}</td>
               <td>{colorData.count}</td>
               <td>
-                &nbsp;
                 <div
                   style={{
                     width: "20px",
