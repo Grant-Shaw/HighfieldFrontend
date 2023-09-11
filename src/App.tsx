@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import ApiDataDisplay from './Components/ApiDataDisplay'; 
-import {AgeData, TopColourData} from './Shared/DataTypes';
+import React, { useState, useEffect } from "react";
+import ApiDataDisplay from "./Components/ApiDataDisplay";
+import { AgeData, TopColourData } from "./Shared/DataTypes";
 
 interface ApiResponse {
   ages: AgeData[];
@@ -15,10 +15,10 @@ function App() {
   // Function to fetch data from the API
   const fetchData = () => {
     setFetching(true); // Set fetching to true while waiting for the API response
-    fetch('https://localhost:7125/api/Users/UserData')
+    fetch("https://localhost:7125/api/Users/UserData")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -35,13 +35,13 @@ function App() {
   };
 
   useEffect(() => {
-    !fetching && fetchData()
+    !fetching && fetchData();
   }, []);
 
   return (
     <div>
       <h1>Highfield Recruitment Task</h1>
-      
+
       {/*Display "loading" when fetching data*/}
       {fetching && <p>Loading data...</p>}
 
@@ -49,7 +49,9 @@ function App() {
       {error && <p>Error: {error}</p>}
 
       {/* Display the data if it's available */}
-      {data && <ApiDataDisplay ageData={data.ages} topColourData={data.topColours} />}
+      {data && (
+        <ApiDataDisplay ageData={data.ages} topColourData={data.topColours} />
+      )}
     </div>
   );
 }
