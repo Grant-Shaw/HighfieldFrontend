@@ -43,10 +43,18 @@ function App() {
       <h1>Highfield Recruitment Task</h1>
 
       {/*Display "loading" when fetching data*/}
-      {fetching && <p>Loading data...</p>}
+      {fetching && (
+        <div className="spinner-border text-info" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
 
       {/* Display an error message if there's an error */}
-      {error && <p>Error: {error}</p>}
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          Error: {error}
+        </div>
+      )}
 
       {/* Display the data if it's available */}
       {data && <ApiDataDisplay data={data} />}
