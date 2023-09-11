@@ -49,9 +49,7 @@ function App() {
       {error && <p>Error: {error}</p>}
 
       {/* Display the data if it's available */}
-      {data && (
-        <ApiDataDisplay ageData={data.ages} topColourData={data.topColours} />
-      )}
+      {data && <ApiDataDisplay data={data} />}
     </div>
   );
 }

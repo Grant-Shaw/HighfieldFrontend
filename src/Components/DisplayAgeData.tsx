@@ -1,13 +1,13 @@
-import {AgeData} from '../Shared/DataTypes';
+import { AgeData } from "../Shared/DataTypes";
 
 interface Props {
-    ageData: AgeData[]
+  ageData: AgeData[];
 }
 
-const DisplayAgeData = ({ageData} : Props) => {
+const DisplayAgeData = ({ ageData }: Props) => {
   return (
     <>
-    <h2>Age Data</h2> 
+      <h2>Age Data</h2>
       <table>
         <thead>
           <tr>
@@ -26,8 +26,8 @@ const DisplayAgeData = ({ageData} : Props) => {
           ))}
         </tbody>
       </table>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default DisplayAgeData
+export default DisplayAgeData;

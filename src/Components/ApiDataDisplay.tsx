@@ -1,46 +1,23 @@
-import {AgeData, TopColourData} from '../Shared/DataTypes';
-import DisplayAgeData from './DisplayAgeData';
+// ApiDataDisplay.js
+import React from "react";
+import DisplayAgeData from "./DisplayAgeData";
+import DisplayColourData from "./DisplayColourData";
+import { AgeData, TopColourData } from "../Shared/DataTypes";
 
 interface Props {
-  ageData: AgeData[];
-  topColourData: TopColourData[];
+  data: {
+    ages: AgeData[];
+    topColours: TopColourData[];
+  };
 }
 
-function ApiDataDisplay( {ageData, topColourData}  : Props){
+function ApiDataDisplay({ data }: Props) {
   return (
     <>
-      <DisplayAgeData ageData={ageData}/>
-      <h2>Top Colours</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Colour</th>
-            <th>Count &nbsp;</th>
-            <th>Color Preview</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topColourData.map((colorData, index) => (
-            <tr key={index}>
-              <td>{colorData.colour}</td>
-              <td>{colorData.count}</td>
-              <td>
-                &nbsp;
-                <div
-                  style={{
-                    width: '20px', 
-                    height: '20px',
-                    backgroundColor: colorData.colour,
-                    display: 'inline-block',
-                  }}
-                ></div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DisplayAgeData ageData={data.ages} />
+      <DisplayColourData topColourData={data.topColours} />
     </>
   );
-};
+}
 
 export default ApiDataDisplay;
