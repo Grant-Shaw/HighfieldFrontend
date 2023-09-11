@@ -1,5 +1,4 @@
 import { AgeData } from "../Shared/DataTypes";
-import "./css/styling.css";
 
 interface Props {
   ageData: AgeData[];
