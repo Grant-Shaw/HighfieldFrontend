@@ -1,44 +1,15 @@
-import React from 'react';
-
-interface AgeData {
-  userId: string;
-  originalAge: number;
-  agePlusTwenty: number;
-}
-
-interface TopColourData {
-  colour: string;
-  count: number;
-}
+import {AgeData, TopColourData} from '../Shared/DataTypes';
+import DisplayAgeData from './DisplayAgeData';
 
 interface Props {
   ageData: AgeData[];
   topColourData: TopColourData[];
 }
 
-const ApiDataDisplay: React.FC<Props> = ({ ageData, topColourData }) => {
+function ApiDataDisplay( {ageData, topColourData}  : Props){
   return (
-    <div>
-      <h2>Age Data</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>User ID &nbsp;</th>
-            <th>Original Age &nbsp;</th>
-            <th>Age Plus Twenty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ageData.map((ageDataItem, index) => (
-            <tr key={index}>
-              <td>{ageDataItem.userId} &nbsp;</td>
-              <td>{ageDataItem.originalAge} &nbsp;</td>
-              <td>{ageDataItem.agePlusTwenty}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
+    <>
+      <DisplayAgeData ageData={ageData}/>
       <h2>Top Colours</h2>
       <table>
         <thead>
@@ -68,7 +39,7 @@ const ApiDataDisplay: React.FC<Props> = ({ ageData, topColourData }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

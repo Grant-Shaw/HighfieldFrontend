@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ApiDataDisplay from './Components/ApiDataDisplay'; // Adjust the path as needed
+import ApiDataDisplay from './Components/ApiDataDisplay'; 
+import {AgeData, TopColourData} from './Shared/DataTypes';
 
 interface ApiResponse {
-  ages: {
-    userId: string;
-    originalAge: number;
-    agePlusTwenty: number;
-  }[];
-  topColours: {
-    colour: string;
-    count: number;
-  }[];
+  ages: AgeData[];
+  topColours: TopColourData[];
 }
 
 function App() {
@@ -41,16 +35,15 @@ function App() {
   };
 
   useEffect(() => {
+    !fetching && fetchData()
   }, []);
 
   return (
     <div>
       <h1>Highfield Recruitment Task</h1>
-
-      {/* Render the button only if data is not being fetched */}
-      {!fetching && (
-        <button onClick={fetchData}>Fetch Data</button>
-      )}
+      
+      {/*Display "loading" when fetching data*/}
+      {fetching && <p>Loading data...</p>}
 
       {/* Display an error message if there's an error */}
       {error && <p>Error: {error}</p>}
